@@ -1,6 +1,21 @@
+import { useEffect, useState } from 'react';
+
 export default function Heart() {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setReady(true), 200);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
-    <div className="bg-heart">
+    <div
+      className={`
+        bg-heart
+        transition-opacity duration-1000
+        ${ready ? 'opacity-100' : 'opacity-0'}
+      `}
+    >
       <svg
         className="heart-svg"
         viewBox="0 0 100 100"

@@ -1,9 +1,12 @@
 import Profile from './components/Profile';
 import About from './components/About';
 import Projects from './components/Projects';
+import FutureProjects from './components/FutureProjects';
 import Footer from './components/Footer';
 import ParticlesBackground from './components/ParticlesBackground';
 import Heart from './components/Heart';
+import ScrollProgress from './components/ScrollProgress';
+import Loader from './components/Loader';
 
 function App() {
   const projectsData = [
@@ -24,12 +27,32 @@ function App() {
     },
   ];
 
+  const futureProjects = [
+    {
+      name: 'Project X',
+      description: 'Something big and experimental. Details coming later.',
+      status: 'in-development' as const,
+    },
+    {
+      name: 'Project Y',
+      description: 'An idea in the works. Maybe it will see the light.',
+      status: 'future' as const,
+    },
+    {
+      name: 'Project Z',
+      description: 'Almost ready. Just a few finishing touches.',
+      status: 'soon' as const,
+    },
+  ];
+
   return (
     <>
+      <Loader />
+      <ScrollProgress />
       <ParticlesBackground />
       <Heart />
 
-      <main className="w-full px-12 py-20 pl-16">
+      <main className="w-full px-5 sm:px-10 lg:px-12 py-16 sm:py-20 lg:pl-16">
         <Profile
           nick="mgfell"
           tagline="developer & builder · making things on the internet"
@@ -45,6 +68,8 @@ function App() {
         <About />
 
         <Projects projects={projectsData} />
+
+        <FutureProjects projects={futureProjects} />
       </main>
 
       <Footer />

@@ -3,10 +3,10 @@ export default function Footer() {
 
   return (
     <footer className="
-      fixed bottom-4 left-1/2 -translate-x-1/2
-      px-6 py-3
+      fixed bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2
+      px-4 sm:px-6 py-2 sm:py-3
       flex items-center gap-2
-      text-xs tracking-wide
+      text-[0.65rem] sm:text-xs tracking-wide
       text-[rgba(190,195,205,0.55)]
       font-['JetBrains_Mono',monospace]
       bg-[rgba(20,22,26,0.55)] backdrop-blur-[16px]
@@ -15,6 +15,7 @@ export default function Footer() {
       shadow-[0_10px_40px_rgba(0,0,0,0.4)]
       pointer-events-none
       z-10
+      whitespace-nowrap
     ">
       <span>© {year} mgfell</span>
       <span className="opacity-60">·</span>

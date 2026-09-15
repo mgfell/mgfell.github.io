@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* ================== CSS VARIABLES ================== */
 :root {
   --bg-0: #0c0e11;
   --bg-1: #14161a;
@@ -18,9 +17,17 @@
   --heart-grey: #c8ccd3;
 }
 
-/* ================== BASE ================== */
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 body {
@@ -67,7 +74,6 @@ body::after {
   opacity: 0.7;
 }
 
-/* ================== TEXT SELECTION ================== */
 ::selection {
   background: rgba(230, 235, 242, 0.15);
   color: #ffffff;
@@ -78,7 +84,6 @@ body::after {
   color: #ffffff;
 }
 
-/* ================== BG HEART + ECG ================== */
 .bg-heart {
   position: fixed;
   top: 0;
@@ -122,7 +127,6 @@ body::after {
   stroke-dashoffset: 1400;
 }
 
-/* ================== ANIMATIONS ================== */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }

@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function ParticlesBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -13,7 +14,6 @@ export default function ParticlesBackground() {
     const cvs = canvas as HTMLCanvasElement;
     const context = ctx as CanvasRenderingContext2D;
 
-    // ---------- НАСТРОЙКИ ----------
     const CONFIG = {
       density: 0.00020,
       maxParticles: 480,
@@ -42,7 +42,6 @@ export default function ParticlesBackground() {
       heart:  { r: 255, g: 80,  b: 95 },
     };
 
-    // ---------- СОСТОЯНИЕ ----------
     let particles: {
       x: number; y: number;
       hx: number; hy: number;
@@ -276,7 +275,6 @@ export default function ParticlesBackground() {
       const har2 = har * har;
       const offsetY = -scrollY * CONFIG.parallaxStrength;
 
-      // ЛИНИИ
       context.lineWidth = 0.5;
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
@@ -342,7 +340,6 @@ export default function ParticlesBackground() {
         }
       }
 
-      // ТОЧКИ
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
         const py = p.y + offsetY;
@@ -413,6 +410,10 @@ export default function ParticlesBackground() {
     resize();
     loop();
 
+    requestAnimationFrame(() => {
+      setTimeout(() => setReady(true), 100);
+    });
+
     return () => {
       cancelAnimationFrame(rafId);
       window.removeEventListener('resize', resize);
@@ -427,9 +428,13 @@ export default function ParticlesBackground() {
 
   return (
     <canvas
-        ref={canvasRef}
-        className="fixed inset-0 w-full h-full pointer-events-none block"
-        style={{ zIndex: -1 }}
+      ref={canvasRef}
+      className={`
+        fixed inset-0 w-full h-full pointer-events-none block
+        transition-opacity duration-1000
+        ${ready ? 'opacity-100' : 'opacity-0'}
+      `}
+      style={{ zIndex: -1 }}
     />
   );
 }
