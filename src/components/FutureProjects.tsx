@@ -1,11 +1,13 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
+import { Link } from 'react-router-dom';
 
-type ProjectStatus = 'future' | 'in-development' | 'soon';
+type ProjectStatus = 'future' | 'in-development' | 'soon' | 'released';
 
 interface FutureProject {
+  slug: string;
   name: string;
-  description: string;
+  short: string;
   status: ProjectStatus;
 }
 
@@ -14,12 +16,17 @@ interface FutureProjectsProps {
 }
 
 const STATUS_LABELS: Record<ProjectStatus, string> = {
+  'released': 'Released',
   'future': 'Future',
   'in-development': 'In Development',
   'soon': 'Soon',
 };
 
 const STATUS_STYLES: Record<ProjectStatus, string> = {
+  'released': `
+    text-emerald-300 border-emerald-400/40 bg-emerald-400/10
+    shadow-[0_0_16px_rgba(52,211,153,0.25)]
+  `,
   'future': `
     text-yellow-300 border-yellow-400/40 bg-yellow-400/10
     shadow-[0_0_16px_rgba(250,204,21,0.25)]
@@ -186,9 +193,10 @@ export default function FutureProjects({ projects }: FutureProjectsProps) {
         className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-5"
         style={{ perspective: '1200px' }}
       >
-        {projects.map((p, i) => (
-          <article
-            key={i}
+        {projects.map((p) => (
+          <Link
+            to={`/project/${p.slug}`}
+            key={p.slug}
             className="
               future-card
               relative p-6 sm:p-7 pt-12 rounded-[14px]
@@ -196,7 +204,9 @@ export default function FutureProjects({ projects }: FutureProjectsProps) {
               border border-dashed border-[rgba(255,255,255,0.10)]
               overflow-hidden
               will-change-transform
+              cursor-pointer
               isolate
+              block
             "
             style={{ transformStyle: 'preserve-3d' }}
           >
@@ -223,9 +233,9 @@ export default function FutureProjects({ projects }: FutureProjectsProps) {
               {p.name}
             </h3>
             <p className="relative z-10 text-[var(--muted)] text-sm leading-[1.6]">
-              {p.description}
+              {p.short}
             </p>
-          </article>
+          </Link>
         ))}
       </div>
     </section>

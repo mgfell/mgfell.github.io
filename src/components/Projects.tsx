@@ -1,10 +1,12 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
+import { Link } from 'react-router-dom';
 
 interface Project {
+  slug: string;
   name: string;
+  short: string;
   description: string;
-  link?: string;
 }
 
 interface ProjectsProps {
@@ -55,9 +57,6 @@ export default function Projects({ projects }: ProjectsProps) {
 
         const glow = card.querySelector<HTMLElement>('.card-glow');
         if (glow) gsap.to(glow, { opacity: 0, scale: 1, duration: 0.4 });
-
-        const link = card.querySelector<HTMLElement>('.card-link');
-        if (link) gsap.to(link, { x: 0, y: 0, duration: 0.4 });
       });
     };
 
@@ -99,7 +98,6 @@ export default function Projects({ projects }: ProjectsProps) {
 
     cards.forEach((card, i) => {
       const shine = card.querySelector<HTMLElement>('.card-shine');
-      const link = card.querySelector<HTMLElement>('.card-link');
 
       const onEnter = () => activate(i);
       addListener(card, 'mouseenter', onEnter);
@@ -128,23 +126,6 @@ export default function Projects({ projects }: ProjectsProps) {
             background: `radial-gradient(circle at ${x}px ${y}px, rgba(255,42,61,0.18), transparent 60%)`,
             duration: 0.3,
           });
-        }
-
-        if (link) {
-          const linkRect = link.getBoundingClientRect();
-          const lx = linkRect.left + linkRect.width / 2;
-          const ly = linkRect.top + linkRect.height / 2;
-          const dist = Math.hypot(ev.clientX - lx, ev.clientY - ly);
-          if (dist < 120) {
-            gsap.to(link, {
-              x: (ev.clientX - lx) * 0.15,
-              y: (ev.clientY - ly) * 0.15,
-              duration: 0.4,
-              ease: 'power2.out',
-            });
-          } else {
-            gsap.to(link, { x: 0, y: 0, duration: 0.4 });
-          }
         }
       };
       addListener(card, 'mousemove', onMove);
@@ -175,9 +156,10 @@ export default function Projects({ projects }: ProjectsProps) {
         className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-5"
         style={{ perspective: '1200px' }}
       >
-        {projects.map((p, i) => (
-          <article
-            key={i}
+        {projects.map((p) => (
+          <Link
+            to={`/project/${p.slug}`}
+            key={p.slug}
             className="
               project-card
               relative p-6 sm:p-7 rounded-[14px]
@@ -187,6 +169,7 @@ export default function Projects({ projects }: ProjectsProps) {
               will-change-transform
               cursor-pointer
               isolate
+              block
             "
             style={{ transformStyle: 'preserve-3d' }}
           >
@@ -201,27 +184,10 @@ export default function Projects({ projects }: ProjectsProps) {
             <h3 className="relative z-10 text-lg font-semibold mb-2 tracking-wide text-[var(--text)]">
               {p.name}
             </h3>
-            <p className="relative z-10 text-[var(--muted)] text-sm leading-[1.6] mb-4">
-              {p.description}
+            <p className="relative z-10 text-[var(--muted)] text-sm leading-[1.6]">
+              {p.short}
             </p>
-            {p.link && (
-              <a
-                href={p.link}
-                className="
-                  card-link relative z-10
-                  inline-flex items-center gap-1.5
-                  text-[var(--text-soft)] text-sm font-medium
-                  tracking-wide
-                  transition-colors duration-300
-                  hover:text-[var(--accent-light)]
-                  after:content-['→'] after:transition-transform
-                  hover:after:translate-x-1
-                "
-              >
-                Documentation
-              </a>
-            )}
-          </article>
+          </Link>
         ))}
       </div>
     </section>
