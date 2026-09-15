@@ -1,7 +1,8 @@
+import avatarImg from '../assets/avatar.jpg';
+
 interface ProfileProps {
   nick: string;
   tagline: string;
-  avatarText: string;
   stats: {
     label: string;
     value: string;
@@ -9,7 +10,7 @@ interface ProfileProps {
   }[];
 }
 
-export default function Profile({ nick, tagline, avatarText, stats }: ProfileProps) {
+export default function Profile({ nick, tagline, stats }: ProfileProps) {
   return (
     <section className="mb-20 animate-[fadeUp_0.9s_ease_both]">
       <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-10">
@@ -27,15 +28,14 @@ export default function Profile({ nick, tagline, avatarText, stats }: ProfilePro
             <div className="
               w-full h-full rounded-full
               bg-[var(--bg-1)]
-              flex items-center justify-center
-              font-['JetBrains_Mono',monospace] font-bold
-              text-4xl sm:text-5xl lg:text-7xl
-              tracking-widest
-              text-[var(--text-soft)]
-              border border-white/5
               overflow-hidden
+              border border-white/5
             ">
-              {avatarText}
+              <img
+                src={avatarImg}
+                alt="mgfell"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 

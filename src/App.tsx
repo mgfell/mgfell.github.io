@@ -56,7 +56,6 @@ function App() {
         <Profile
           nick="mgfell"
           tagline="developer & builder · making things on the internet"
-          avatarText="MG"
           stats={[
             { label: 'since', value: '14 july 2026' },
             { label: 'projects', value: '3' },
