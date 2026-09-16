@@ -2,7 +2,6 @@ import { useParams, Link } from 'react-router-dom';
 import { getProjectBySlug } from '../data/projects';
 import NotFound from './NotFound';
 import ParticlesBackground from '../components/ParticlesBackground';
-import Heart from '../components/Heart';
 import ScrollProgress from '../components/ScrollProgress';
 
 const STATUS_LABELS: Record<string, string> = {
@@ -41,7 +40,6 @@ export default function ProjectPage() {
     <>
       <ScrollProgress />
       <ParticlesBackground />
-      <Heart />
 
       <main className="w-full px-5 sm:px-10 lg:px-12 py-16 sm:py-20 lg:pl-16 max-w-[900px]">
         <Link

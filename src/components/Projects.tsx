@@ -123,7 +123,7 @@ export default function Projects({ projects }: ProjectsProps) {
 
         if (shine) {
           gsap.to(shine, {
-            background: `radial-gradient(circle at ${x}px ${y}px, rgba(255,42,61,0.18), transparent 60%)`,
+            background: `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.06), transparent 60%)`,
             duration: 0.3,
           });
         }
@@ -142,18 +142,19 @@ export default function Projects({ projects }: ProjectsProps) {
   return (
     <section className="mb-24">
       <div className="
-        font-['JetBrains_Mono',monospace] text-[0.72rem]
-        tracking-[3px] uppercase text-[var(--accent)] mb-2
+        font-['JetBrains_Mono',monospace] text-[0.7rem]
+        tracking-[0.2em] uppercase text-[var(--muted)] mb-3
+        text-center
       ">
         // 02 — projects
       </div>
-      <h2 className="text-3xl font-semibold tracking-wide mb-6 text-[var(--text)]">
+      <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text)] text-center mb-12">
         My Projects
       </h2>
 
       <div
         ref={gridRef}
-        className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-5"
+        className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-4"
         style={{ perspective: '1200px' }}
       >
         {projects.map((p) => (
@@ -162,26 +163,28 @@ export default function Projects({ projects }: ProjectsProps) {
             key={p.slug}
             className="
               project-card
-              relative p-6 sm:p-7 rounded-[14px]
-              bg-[rgba(20,22,26,0.4)] backdrop-blur-[16px]
-              border border-[rgba(255,42,61,0.08)]
+              relative p-7 rounded-2xl
+              bg-white/[0.02] backdrop-blur-xl
+              border border-white/[0.06]
               overflow-hidden
               will-change-transform
               cursor-pointer
               isolate
               block
+              transition-colors duration-300
+              hover:border-white/[0.15]
             "
             style={{ transformStyle: 'preserve-3d' }}
           >
             <div className="card-shine absolute inset-0 pointer-events-none" />
 
             <div className="
-              card-glow absolute inset-0 rounded-[14px] pointer-events-none opacity-0
-              shadow-[0_0_40px_rgba(255,42,61,0.35),0_0_80px_rgba(255,42,61,0.15),inset_0_1px_0_rgba(255,255,255,0.1)]
-              border border-[rgba(255,42,61,0.4)]
+              card-glow absolute inset-0 rounded-2xl pointer-events-none opacity-0
+              shadow-[0_0_40px_rgba(255,255,255,0.1),inset_0_1px_0_rgba(255,255,255,0.08)]
+              border border-white/[0.2]
             " />
 
-            <h3 className="relative z-10 text-lg font-semibold mb-2 tracking-wide text-[var(--text)]">
+            <h3 className="relative z-10 text-lg font-semibold mb-2 tracking-tight text-[var(--text)]">
               {p.name}
             </h3>
             <p className="relative z-10 text-[var(--muted)] text-sm leading-[1.6]">

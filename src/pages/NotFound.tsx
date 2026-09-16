@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom';
 import ParticlesBackground from '../components/ParticlesBackground';
-import Heart from '../components/Heart';
 
 export default function NotFound() {
   return (
     <>
       <ParticlesBackground />
-      <Heart />
 
       <div className="
         relative min-h-screen w-full
@@ -16,8 +14,8 @@ export default function NotFound() {
         <div className="
           font-['JetBrains_Mono',monospace] font-bold
           text-[8rem] sm:text-[12rem] lg:text-[16rem] leading-none
-          text-[var(--accent)]
-          [text-shadow:0_0_60px_rgba(255,42,61,0.6),0_0_120px_rgba(255,42,61,0.3)]
+          text-white
+          [text-shadow:0_0_60px_rgba(255,255,255,0.3),0_0_120px_rgba(255,255,255,0.1)]
           select-none
         ">
           404
@@ -44,14 +42,14 @@ export default function NotFound() {
           to="/"
           className="
             px-6 py-3 rounded-full
-            bg-[rgba(20,22,26,0.6)] backdrop-blur-[16px]
-            border border-[rgba(255,42,61,0.3)]
+            bg-white/[0.03] backdrop-blur-xl
+            border border-white/[0.1]
             text-[var(--text)] text-sm tracking-wide
             font-['JetBrains_Mono',monospace] uppercase
             transition-all duration-300
-            hover:border-[var(--accent)]
-            hover:text-[var(--accent-light)]
-            hover:shadow-[0_0_30px_rgba(255,42,61,0.4)]
+            hover:border-white/30
+            hover:bg-white/[0.06]
+            hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]
             hover:-translate-y-0.5
           "
         >

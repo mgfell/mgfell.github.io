@@ -32,8 +32,8 @@ const STATUS_STYLES: Record<ProjectStatus, string> = {
     shadow-[0_0_16px_rgba(250,204,21,0.25)]
   `,
   'in-development': `
-    text-[var(--accent-light)] border-[var(--accent)]/50 bg-[var(--accent)]/10
-    shadow-[0_0_16px_rgba(255,42,61,0.35)]
+    text-white border-white/30 bg-white/[0.06]
+    shadow-[0_0_16px_rgba(255,255,255,0.15)]
   `,
   'soon': `
     text-purple-300 border-purple-400/40 bg-purple-400/10
@@ -170,14 +170,15 @@ export default function FutureProjects({ projects }: FutureProjectsProps) {
   return (
     <section className="mb-24">
       <div className="
-        font-['JetBrains_Mono',monospace] text-[0.72rem]
-        tracking-[3px] uppercase text-[var(--accent)] mb-2
+        font-['JetBrains_Mono',monospace] text-[0.7rem]
+        tracking-[0.2em] uppercase text-[var(--muted)] mb-3
+        text-center
       ">
         // 03 — future
       </div>
 
-      <div className="flex items-baseline gap-4 mb-6 flex-wrap">
-        <h2 className="text-3xl font-semibold tracking-wide text-[var(--text)]">
+      <div className="flex flex-col items-center gap-2 mb-12">
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text)]">
           Future Projects
         </h2>
         <span className="
@@ -190,7 +191,7 @@ export default function FutureProjects({ projects }: FutureProjectsProps) {
 
       <div
         ref={gridRef}
-        className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-5"
+        className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-4"
         style={{ perspective: '1200px' }}
       >
         {projects.map((p) => (
@@ -199,29 +200,31 @@ export default function FutureProjects({ projects }: FutureProjectsProps) {
             key={p.slug}
             className="
               future-card
-              relative p-6 sm:p-7 pt-12 rounded-[14px]
-              bg-[rgba(20,22,26,0.35)] backdrop-blur-[16px]
-              border border-dashed border-[rgba(255,255,255,0.10)]
+              relative p-7 pt-14 rounded-2xl
+              bg-white/[0.015] backdrop-blur-xl
+              border border-dashed border-white/[0.08]
               overflow-hidden
               will-change-transform
               cursor-pointer
               isolate
               block
+              transition-colors duration-300
+              hover:border-white/[0.2]
             "
             style={{ transformStyle: 'preserve-3d' }}
           >
             <div className="future-shine absolute inset-0 pointer-events-none" />
             <div className="
-              future-glow absolute inset-0 rounded-[14px] pointer-events-none opacity-0
-              shadow-[0_0_40px_rgba(255,255,255,0.15),0_0_80px_rgba(255,255,255,0.06),inset_0_1px_0_rgba(255,255,255,0.1)]
-              border border-[rgba(255,255,255,0.25)]
+              future-glow absolute inset-0 rounded-2xl pointer-events-none opacity-0
+              shadow-[0_0_40px_rgba(255,255,255,0.1),inset_0_1px_0_rgba(255,255,255,0.08)]
+              border border-white/[0.2]
             " />
 
             <span className={`
               absolute top-4 right-4 z-10
-              px-2.5 py-1
+              px-3 py-1
               text-[0.6rem] font-semibold
-              tracking-[1.5px] uppercase
+              tracking-[0.15em] uppercase
               border rounded-full
               font-['JetBrains_Mono',monospace]
               ${STATUS_STYLES[p.status]}
@@ -229,7 +232,7 @@ export default function FutureProjects({ projects }: FutureProjectsProps) {
               {STATUS_LABELS[p.status]}
             </span>
 
-            <h3 className="relative z-10 text-lg font-semibold mb-2 tracking-wide text-[var(--text)]">
+            <h3 className="relative z-10 text-lg font-semibold mb-2 tracking-tight text-[var(--text)]">
               {p.name}
             </h3>
             <p className="relative z-10 text-[var(--muted)] text-sm leading-[1.6]">

@@ -51,20 +51,30 @@ All materials published on this platform are the intellectual property of the pr
     year: '2026 / September 14',
   },
   {
-    slug: 'project-two',
-    name: 'Project Two',
-    short: 'Short description of what this project does and why it exists.',
+    slug: 're-convert',
+    name: 'Re:convert',
+    short: 'Web converter — private file conversion right in your browser.',
     description: `
-      Long detailed description of the second project.
+      This software solution is positioned as the official instrument for private digital file conversion. The platform ensures operational transparency of the transformation process and guarantees the preservation of source data within the perimeter of the user's device: files do not leave the client environment and are not transmitted to external server nodes at any stage of processing.
+
+The conversion mechanism serves as the primary channel for delivering functionally complete results to users in the required format. All operations are executed within an isolated browser execution environment, which eliminates the possibility of unauthorized third-party access to processed materials and minimizes the risks of confidential information compromise.
+
+Each conversion operation is subject to internal correctness control: the output file undergoes automatic validation to ensure compliance with the target format and the integrity of its data structure. Results are generated in strict accordance with approved technical conversion specifications and industry-standard format compatibility requirements.
+
+The solution's architecture is designed to ensure result reproducibility and the ability to verify conversion correctness. During each processing session, the system records a set of metadata, including the source and target formats, file size, and a checksum (hash) of the output artifact — this allows confirmation of content immutability and exclusion of distortions during conversion.
+
+Access to the platform's functionality is granted exclusively for informational and operational purposes and does not imply any legally binding obligations on the part of the operator. The integrity and security of user data are maintained through established technical and administrative control measures, including environment isolation, absence of external network requests, and minimization of dependencies on third-party services.
+
+Regular audits of the codebase and data processing procedures are conducted to confirm compliance with current information security requirements and the stability of conversion algorithms. All materials hosted on the platform, as well as the software implementation of the tool, constitute the intellectual property of the developer and are protected under applicable legal frameworks.
     `,
     status: 'released',
-    stack: ['Vite', 'Three.js'],
+    stack: ['Vite', 'TypeScript'],
     links: {
-      live: '#',
-      github: '#',
+      live: 'https://mgfell.github.io/re-convert/#app',
+      github: 'https://github.com/mgfell/re-convert',
     },
     screenshots: [],
-    year: '2026',
+    year: '2026 September 8-16',
   },
   {
     slug: 'project-three',

@@ -1,5 +1,5 @@
 export const CONFIG = {
-  density: 0.0001,
+  density: 0.00006,
   maxParticles: 900,
   minDist: 4,
   linkDist: 130,
@@ -23,10 +23,10 @@ export const CONFIG = {
 
 export const COLORS = {
   base:  { r: 140, g: 145, b: 158 },
-  soft:  { r: 180, g: 185, b: 198 },
-  pink:  { r: 220, g: 110, b: 130 },
-  hot:   { r: 255, g: 42,  b: 61 },
-  heart: { r: 255, g: 80,  b: 95 },
+  soft:  { r: 200, g: 205, b: 215 },
+  pink:  { r: 230, g: 232, b: 236 },
+  hot:   { r: 255, g: 255, b: 255 },
+  heart: { r: 200, g: 205, b: 215 },
 };
 
 export const LINK_BASE_COLOR = { r: 200, g: 205, b: 215 };

@@ -23,7 +23,6 @@ export default function Loader() {
     }, 40);
 
     return () => clearInterval(interval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -31,7 +30,7 @@ export default function Loader() {
       className={`
         fixed inset-0 z-[200]
         flex items-center justify-center flex-col gap-6
-        bg-[var(--bg-0)]
+        bg-[#08090c]
         transition-opacity duration-700
         ${hidden ? 'opacity-0 pointer-events-none' : 'opacity-100'}
       `}
@@ -40,7 +39,7 @@ export default function Loader() {
         font-['JetBrains_Mono',monospace] font-bold
         text-4xl tracking-[6px]
         text-[var(--text)]
-        [text-shadow:0_0_30px_rgba(255,42,61,0.4)]
+        [text-shadow:0_0_30px_rgba(255,255,255,0.15)]
       ">
         mgfell
       </div>
@@ -52,8 +51,8 @@ export default function Loader() {
         <div
           className="
             absolute top-0 left-0 h-full
-            bg-gradient-to-r from-[var(--accent-deep)] via-[var(--accent)] to-[var(--accent-light)]
-            shadow-[0_0_12px_rgba(255,42,61,0.8)]
+            bg-white
+            shadow-[0_0_12px_rgba(255,255,255,0.6)]
             transition-[width] duration-75 ease-out
           "
           style={{ width: `${progress}%` }}
